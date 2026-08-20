@@ -2,7 +2,7 @@
 
 **DeepSeek Harness「数据分析模式」**：一个开源的数据分析 agent 预设（preset）+ 技能集 + DuckDB MCP 服务器接入。
 
-在 DeepSeek Harness（DSH）Web 上新建会话时选择「数据分析模式」，即可获得一位**资深数据分析师**：完整编码助手能力 + 专业分析工作流 + 12 个即用技能 + 本地 DuckDB SQL 引擎（MCP）。
+在 DeepSeek Harness（DSH）Web 上新建会话时选择「数据分析模式」，即可获得一位**资深数据分析师**：完整编码助手能力 + 专业分析工作流 + 13 个即用技能 + 本地 DuckDB SQL 引擎（MCP）。
 
 作者：**Kaalia0912**（MIT License，见 `LICENSE`）
 
@@ -11,8 +11,8 @@
 ## ✨ 特性
 
 - **专业 persona**：结论先行、数据质量优先、可复现性、严谨统计；保留 `{{model}}` / `{{cwd}}` 插值，工具面与标准模式完全一致（shell、文件系统、后台任务、技能、目标、计划模式、委派、工作流）
-- **12 个即用技能**（发现实时生效，无需重启）：
-  - 自研（MIT）：`data-analysis`（五阶段分析工作流）、`pandas-3x`（pandas 3.x 行为坑位与高效模式）、`xlsx-tools`（Excel 读写/公式重算/报表）、`visualization`（matplotlib/seaborn 可视化规范）、`database-connect`（MySQL/PostgreSQL 安全连接）
+- **13 个即用技能**（发现实时生效，无需重启）：
+  - 自研（MIT）：`data-analysis`（五阶段分析工作流）、`pandas-3x`（pandas 3.x 行为坑位与高效模式）、`xlsx-tools`（Excel 读写/公式重算/报表）、`visualization`（matplotlib/seaborn 可视化规范）、`database-connect`（MySQL/PostgreSQL 安全连接）、`statistical-modeling`（假设检验/回归/sklearn 建模与评估）
   - DuckDB 官方（MIT）：`query`、`read-file`、`convert-file`、`attach-db`、`install-duckdb`
   - 字节 deer-flow（MIT，改写适配 DSH 路径）：`deer-data-analysis`（带 analyze.py 脚本）
   - OpenAI 官方（Apache-2.0）：`pdf`（reportlab/pdfplumber 生成与提取）
@@ -87,6 +87,7 @@ skills/                        # 技能（平铺布局，可直接并入 ~/.dsh/
   xlsx-tools/                  # 自研：Excel 读写/公式重算（含 recalc_excel.py）
   visualization/               # 自研：matplotlib/seaborn 可视化规范
   database-connect/            # 自研：MySQL/PostgreSQL 安全连接
+  statistical-modeling/        # 自研：假设检验/回归/ML 建模与评估
   deer-data-analysis/          # 字节 MIT（改写）：DuckDB SQL 分析
   pdf/                         # OpenAI Apache-2.0：PDF 生成与提取
   query/ read-file/ convert-file/ attach-db/ install-duckdb/   # DuckDB 官方 MIT
