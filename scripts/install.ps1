@@ -51,9 +51,8 @@ $dstPreset = Join-Path $PresetRoot 'data-analysis'
 New-Item -ItemType Directory -Force $dstPreset | Out-Null
 
 $template = Get-Content (Join-Path $repo 'agent-presets\data-analysis\agent.cordis.yml') -Raw -Encoding UTF8
-$content = $template
-    .Replace('{{MCP_DUCKDB_EXE}}', $exe.Replace('\', '\\'))
-    .Replace('{{ANALYSIS_DB_PATH}}', $dbPath.Replace('\', '\\'))
+# 占位符替换：YAML 单引号标量中反斜杠是字面量，Windows 路径原样写入（不转义双反斜杠）。
+$content = $template.Replace('{{MCP_DUCKDB_EXE}}', $exe).Replace('{{ANALYSIS_DB_PATH}}', $dbPath)
 Set-Content -Path (Join-Path $dstPreset 'agent.cordis.yml') -Value $content -Encoding UTF8 -NoNewline
 Copy-Item (Join-Path $repo 'agent-presets\data-analysis\preset.yml') (Join-Path $dstPreset 'preset.yml') -Force
 Write-Host "    预设: $dstPreset" -ForegroundColor Green
