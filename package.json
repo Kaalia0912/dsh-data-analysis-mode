@@ -1,7 +1,7 @@
 {
   "name": "dsh-data-analysis-mode",
   "version": "0.1.0",
-  "description": "DeepSeek Harness「数据分析模式」：数据分析师 agent 预设 + 技能集（DuckDB 官方 / deer-flow 改写 / 自研）+ DuckDB MCP 服务器接入。",
+  "description": "DeepSeek Harness「数据分析模式」：数据分析师 agent 预设 + 12 个开源技能（DuckDB 官方 / OpenAI / deer-flow 改写 / 自研）+ DuckDB MCP 服务器接入。",
   "license": "MIT",
   "repository": {
     "type": "git",

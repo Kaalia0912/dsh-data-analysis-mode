@@ -74,6 +74,7 @@ Get-ChildItem (Join-Path $repo 'skills') -Directory | Where-Object { $_.Name -ne
 Write-Host ""
 Write-Host "==> 运行时依赖（按需安装）" -ForegroundColor Cyan
 Write-Host "    数据分析/表格: python -m pip install duckdb openpyxl pandas" -ForegroundColor Yellow
+Write-Host "    统计建模/数据库连接: python -m pip install statsmodels sqlalchemy pymysql psycopg2-binary" -ForegroundColor Yellow
 Write-Host "    xlsx 公式重算（Excel COM，推荐配合本机 Microsoft Excel）:" -ForegroundColor Yellow
 Write-Host "        python -m pip install pywin32" -ForegroundColor Yellow
 Write-Host "    PDF（reportlab / pdfplumber / pypdf；渲染检查可选 Poppler）:" -ForegroundColor Yellow
