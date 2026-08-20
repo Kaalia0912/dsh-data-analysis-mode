@@ -30,10 +30,10 @@ This skill analyzes user-uploaded Excel/CSV files using DuckDB — an in-process
 
 When a user uploads data files and requests analysis, identify:
 
-- **File location**: Path(s) to uploaded Excel/CSV files under ``
+- **File location**: Path(s) to the user's data files — workspace-relative or absolute paths, no fixed prefix
 - **Analysis goal**: What insights the user wants (summary, filtering, aggregation, comparison, etc.)
 - **Output format**: How results should be presented (table, CSV export, JSON, etc.)
-- You don't need to check the folder under `/mnt/user-data`
+- No fixed data directory: use the paths the user provides
 
 ### Step 2: Inspect File Structure
 

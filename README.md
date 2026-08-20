@@ -1,23 +1,23 @@
-# dsh-data-analysis-mode 🐘📊
+# dsh-data-analysis-mode 📊
 
-**DeepSeek Harness「数据分析模式」**：一个开箱即用的数据分析 agent 预设（preset）+ 技能集 + DuckDB MCP 服务器接入。
+**DeepSeek Harness「数据分析模式」**：一个开源的数据分析 agent 预设（preset）+ 技能集 + DuckDB MCP 服务器接入。
 
 在 DeepSeek Harness（DSH）Web 上新建会话时选择「数据分析模式」，即可获得一位**资深数据分析师**：完整编码助手能力 + 专业分析工作流 + 12 个即用技能 + 本地 DuckDB SQL 引擎（MCP）。
 
-> 姐妹项目：[dsh-whale-musume-persona](https://github.com/Kaalia0912/dsh-whale-musume-persona)（鲸鱼娘人设模式）。两者互不干扰，可分别安装、按会话选用。
+作者：**Kaalia0912**（MIT License，见 `LICENSE`）
 
 ## ✨ 特性
 
 - **专业 persona**：结论先行、数据质量优先、可复现性、严谨统计；保留 `{{model}}` / `{{cwd}}` 插值，工具面与标准模式完全一致（shell、文件系统、后台任务、技能、目标、计划模式、委派、工作流）
 - **12 个即用技能**（发现实时生效，无需重启）：
-  - 自研（MIT）：`data-analysis`（五阶段分析工作流）、`pandas-3x`（pandas 3.x 行为坑位与高效模式）、`xlsx-tools`（Excel 读写/公式重算/报表，原创）
+  - 自研（MIT）：`data-analysis`（五阶段分析工作流）、`pandas-3x`（pandas 3.x 行为坑位与高效模式）、`xlsx-tools`（Excel 读写/公式重算/报表）
   - DuckDB 官方（MIT）：`query`、`read-file`、`convert-file`、`attach-db`、`install-duckdb`
   - 字节 deer-flow（MIT，改写适配 DSH 路径）：`deer-data-analysis`（带 analyze.py 脚本）
   - OpenAI 官方（Apache-2.0）：`pdf`（reportlab/pdfplumber 生成与提取）
 - **DuckDB MCP 服务器**：SQL 直接查询 CSV/Parquet/Excel/JSON，工具以 `mcp__duckdb__*` 命名空间暴露
 - **Excel 公式重算**：`skills/xlsx-tools/scripts/recalc_excel.py` 用本机 Microsoft Excel COM 重算公式，替代 LibreOffice 依赖（无 Excel 时回退 LibreOffice）
 
-> 📌 许可说明：本项目**刻意不收录** anthropics 官方 `xlsx`/`pdf` 技能（Proprietary 专有许可，不可再分发）。PDF 用 OpenAI 官方技能（Apache-2.0）替代，Excel 用自研 `xlsx-tools` 替代。详见 `THIRD_PARTY_NOTICES.md`。
+> 📌 第三方内容均选用开源许可（DuckDB 官方 MIT、OpenAI 官方 Apache-2.0），许可声明见 `THIRD_PARTY_NOTICES.md`。
 
 ## 📦 前置依赖
 
@@ -90,13 +90,12 @@ scripts/
 
 ## 📜 许可证
 
-- 本仓库代码与自研技能：**MIT**（见 `LICENSE`）
+- 本仓库代码与自研技能：**MIT**（© 2026 Kaalia0912，见 `LICENSE`）
 - 第三方内容见 **`THIRD_PARTY_NOTICES.md`**：
   - DuckDB 官方技能：MIT（© Stichting DuckDB Foundation）
   - deer-flow `data-analysis`：MIT（© Bytedance Ltd.），本仓库提供改写版（DSH 路径适配）
   - OpenAI 官方 `pdf`：Apache-2.0（原样收录，许可证随技能保留）
-  - **不收录** anthropics `xlsx`/`pdf`（Proprietary）
 
-## ⚠️ 免责声明
+## ⚠️ 说明
 
-> 这是社区作品，**不是** DeepSeek 官方功能。「DeepSeek 内置数据分析模式」是社区玩笑，请勿误解。
+本项目是一个独立的开源项目，与 DeepSeek 官方及其任何产品无关联。
