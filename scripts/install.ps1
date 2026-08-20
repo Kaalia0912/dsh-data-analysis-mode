@@ -18,8 +18,9 @@ if ($LASTEXITCODE -ne 0) { throw "未找到 python，请先安装 Python 3.10+ �
 
 python -c "import duckdb" 2>$null
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "    duckdb 未安装，正在 pip install duckdb mcp-server-duckdb ..." -ForegroundColor Yellow
-    python -m pip install --disable-pip-version-check duckdb mcp-server-duckdb
+    Write-Host "    duckdb 未安装，正在 pip install ..." -ForegroundColor Yellow
+    # mcp-server-duckdb 1.1.0 依赖旧版 mcp SDK（<2），直接装最新 mcp 2.x 会导致服务器启动失败
+    python -m pip install --disable-pip-version-check duckdb "mcp-server-duckdb==1.1.0" "mcp<2"
 }
 
 # ── 2. 定位 mcp-server-duckdb 可执行入口 ───────────────────────────────────
@@ -36,7 +37,7 @@ if (-not $exe) {
 }
 if (-not $exe) {
     Write-Warning "未找到 mcp-server-duckdb.exe。MCP 工具将不可用（预设仍可正常使用）。"
-    Write-Warning "可手动安装：python -m pip install mcp-server-duckdb"
+    Write-Warning "可手动安装：python -m pip install mcp-server-duckdb==1.1.0 \"mcp<2\""
     $exe = '<mcp-server-duckdb-not-found>'
 } else {
     Write-Host "    MCP 服务器: $exe" -ForegroundColor Green

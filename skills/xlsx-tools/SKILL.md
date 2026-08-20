@@ -21,11 +21,11 @@ description: Excel 工作簿（.xlsx/.xlsm）的读取、写入与报表制作�
 `openpyxl` 写公式只写文本、**不计算结果**——用 `pandas` 或 `data_only=True` 读取公式单元格会得到 `None`。所以**凡含公式的工作簿，交付前必须重算**：
 
 ```bash
-# 本机有 Microsoft Excel（推荐）：用 Excel COM 重算
+# 本机有 Microsoft Excel（推荐）：用 Excel COM 重算（本技能自带脚本）
 python scripts/recalc_excel.py output.xlsx
 
-# 没有 Excel：用 LibreOffice 重算
-python scripts/recalc.py output.xlsx   # 需要 LibreOffice 的 soffice 在 PATH
+# 没有 Excel：用 LibreOffice 重算（soffice 需在 PATH；转换过程会计算公式并写回缓存值）
+soffice --headless --convert-to "xlsx:Calc MS Excel 2007 XML" --outdir . output.xlsx
 ```
 
 `recalc_excel.py` 输出 JSON：`status`（`success`/`errors_found`）、`total_formulas`、`total_errors`、`error_summary`（错误类型 → 单元格列表）。**只有 `error` 键表示重算失败（exit 1）；`errors_found` 正常 exit 0**，所以看 `status` 字段，别只看退出码。

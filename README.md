@@ -6,6 +6,8 @@
 
 作者：**Kaalia0912**（MIT License，见 `LICENSE`）
 
+> **支持平台**：Windows（推荐；`install.ps1` 面向 Windows 路径约定）。macOS / Linux 可手动安装（预设与技能与平台无关，仅 MCP 服务器的可执行文件路径探测方式不同）。需 DSH Web 发行版包含 `@deepseek-ai/dsh-mcp-client` 插件（较新版本均自带）。
+
 ## ✨ 特性
 
 - **专业 persona**：结论先行、数据质量优先、可复现性、严谨统计；保留 `{{model}}` / `{{cwd}}` 插值，工具面与标准模式完全一致（shell、文件系统、后台任务、技能、目标、计划模式、委派、工作流）
@@ -25,7 +27,7 @@
 |---|---|---|
 | Python 3.10+ | 数据脚本 | ✅ |
 | `duckdb`（pip） | DuckDB Python 库 | ✅（install.ps1 自动装） |
-| `mcp-server-duckdb`（pip） | MCP 服务器 | ✅（install.ps1 自动装） |
+| `mcp-server-duckdb`（pip） | MCP 服务器 | ✅（install.ps1 自动装；**需搭配 `mcp<2`**，1.1.0 与 mcp 2.x 不兼容） |
 | `openpyxl` / `pandas` | xlsx-tools 运行时 | 推荐 |
 | `statsmodels` / `sqlalchemy` / `pymysql` / `psycopg2` | 统计建模与数据库连接 | 推荐 |
 | `pywin32` | Excel COM 公式重算（有 Microsoft Excel 时） | 可选 |
@@ -50,7 +52,9 @@ cd dsh-data-analysis-mode
 ### 方式二：手动
 
 ```powershell
-# 1) 拷贝预设（替换占位符 {{MCP_DUCKDB_EXE}} / {{ANALYSIS_DB_PATH}}）
+# 1) 拷贝预设，并把模板占位符替换成你机器的实际值：
+#    {{MCP_DUCKDB_EXE}}   → mcp-server-duckdb 可执行文件路径（PowerShell 里用 Get-Command mcp-server-duckdb 查询）
+#    {{ANALYSIS_DB_PATH}} → 分析数据库路径（建议 $HOME\.dsh\data-analysis\analysis.duckdb）
 New-Item -ItemType Directory -Force "$HOME\.dsh\.agent-presets" | Out-Null
 Copy-Item -Recurse agent-presets\data-analysis "$HOME\.dsh\.agent-presets\data-analysis"
 
@@ -59,8 +63,8 @@ Get-ChildItem skills -Directory | Where-Object Name -ne 'LICENSES' | ForEach-Obj
   Copy-Item -Recurse $_.FullName "$HOME\.dsh\skills\$($_.Name)"
 }
 
-# 3) 依赖
-python -m pip install duckdb mcp-server-duckdb openpyxl pandas
+# 3) 依赖（注意 mcp-server-duckdb 需要 mcp<2）
+python -m pip install duckdb "mcp-server-duckdb==1.1.0" "mcp<2" openpyxl pandas
 ```
 
 ## 🎯 使用
