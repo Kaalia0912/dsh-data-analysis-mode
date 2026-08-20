@@ -1,0 +1,27 @@
+{
+  "name": "dsh-data-analysis-mode",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness「数据分析模式」：数据分析师 agent 预设 + 技能集（DuckDB 官方 / deer-flow 改写 / 自研）+ DuckDB MCP 服务器接入。",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaalia0912/dsh-data-analysis-mode.git"
+  },
+  "files": [
+    "agent-presets",
+    "skills",
+    "scripts",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "preset",
+    "data-analysis",
+    "duckdb",
+    "mcp",
+    "数据分析"
+  ]
+}
