@@ -33,7 +33,7 @@ Anthropic 官方技能（`skills/xlsx`、`skills/pdf`）为 **Proprietary 专有
 ## 本仓库新增内容（MIT，原创）
 
 - `agent-presets/data-analysis/` 预设组合与 persona
-- `skills/data-analysis/`、`skills/pandas-3x/`、`skills/xlsx-tools/`（含 `scripts/recalc_excel.py`：Excel COM 公式重算，替代 LibreOffice 依赖）
+- `skills/data-analysis/`、`skills/pandas-3x/`、`skills/xlsx-tools/`（含 `scripts/recalc_excel.py`：Excel COM 公式重算，替代 LibreOffice 依赖）、`skills/visualization/`、`skills/database-connect/`
 - `scripts/install.ps1`
 - 对 `deer-data-analysis` 的路径改写
 
