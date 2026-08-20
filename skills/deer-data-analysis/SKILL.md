@@ -1,6 +1,6 @@
 ---
 name: deer-data-analysis
-description: Use this skill when analyzing Excel (.xlsx/.xls) or CSV files with DuckDB: schema inspection, SQL queries, statistical summaries, pivot tables, joins, and export to CSV/JSON/Markdown. 与 data-analysis 工作流技能互补，重 SQL 查询路径。
+description: Use this skill when analyzing Excel (.xlsx/.xls) or CSV files with DuckDB - schema inspection, SQL queries, statistical summaries, pivot tables, joins, and export to CSV/JSON/Markdown. 与 data-analysis 工作流技能互补，重 SQL 查询路径。
 ---
 
 # Data Analysis Skill

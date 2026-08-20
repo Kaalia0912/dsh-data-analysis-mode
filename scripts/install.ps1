@@ -1,12 +1,10 @@
 # dsh-data-analysis-mode — 一键安装脚本
 # 用法：
 #   .\scripts\install.ps1                     # 安装预设 + 全部随仓库技能
-#   .\scripts\install.ps1 -WithAnthropicDocs  # 额外下载 anthropics xlsx/pdf（专有许可，见 README）
 #   .\scripts\install.ps1 -PresetRoot X -SkillsRoot Y   # 自定义安装位置
 param(
     [string]$PresetRoot = (Join-Path $HOME '.dsh\.agent-presets'),
-    [string]$SkillsRoot = (Join-Path $HOME '.dsh\skills'),
-    [switch]$WithAnthropicDocs
+    [string]$SkillsRoot = (Join-Path $HOME '.dsh\skills')
 )
 $ErrorActionPreference = 'Stop'
 $repo = $PSScriptRoot | Split-Path -Parent
@@ -72,27 +70,17 @@ Get-ChildItem (Join-Path $repo 'skills') -Directory | Where-Object { $_.Name -ne
     Write-Host "    + $($_.Name)" -ForegroundColor Green
 }
 
-# ── 5.（可选）anthropics 文档技能：专有许可，需接受后才下载 ─────────────────
-if ($WithAnthropicDocs) {
-    Write-Host ""
-    Write-Host "==> anthropics/skills 的 xlsx/pdf 技能为 Proprietary 许可（非本仓库内容）。" -ForegroundColor Yellow
-    Write-Host "    下载即代表接受其 LICENSE.txt 条款；仅用于个人分析用途。" -ForegroundColor Yellow
-    $tmp = Join-Path $env:TEMP "anthropics-skills-$([guid]::NewGuid().ToString('N'))"
-    git clone --depth 1 https://github.com/anthropics/skills.git $tmp 2>$null
-    foreach ($sk in @('xlsx', 'pdf')) {
-        Copy-Item (Join-Path $tmp "skills\$sk") (Join-Path $SkillsRoot $sk) -Recurse -Force
-        Write-Host "    + $sk (Proprietary)" -ForegroundColor Green
-    }
-    Remove-Item $tmp -Recurse -Force
-    # 本仓库的 Excel COM 重算脚本（替代 LibreOffice），随 xlsx 技能安装
-    Copy-Item (Join-Path $repo 'scripts\recalc_excel.py') (Join-Path $SkillsRoot 'xlsx\scripts\recalc_excel.py') -Force
-    Write-Host "    + recalc_excel.py (Excel COM 公式重算)" -ForegroundColor Green
-    Write-Host "    提示：xlsx 公式重算脚本需要 pywin32（推荐，配合本机 Microsoft Excel）或 LibreOffice。" -ForegroundColor Yellow
-    Write-Host "    推荐安装：python -m pip install pywin32 markitdown openpyxl" -ForegroundColor Yellow
-}
+# ── 5. 运行时依赖提示 ──────────────────────────────────────────────────────
+Write-Host ""
+Write-Host "==> 运行时依赖（按需安装）" -ForegroundColor Cyan
+Write-Host "    数据分析/表格: python -m pip install duckdb openpyxl pandas" -ForegroundColor Yellow
+Write-Host "    xlsx 公式重算（Excel COM，推荐配合本机 Microsoft Excel）:" -ForegroundColor Yellow
+Write-Host "        python -m pip install pywin32" -ForegroundColor Yellow
+Write-Host "    PDF（reportlab / pdfplumber / pypdf；渲染检查可选 Poppler）:" -ForegroundColor Yellow
+Write-Host "        python -m pip install reportlab pdfplumber pypdf" -ForegroundColor Yellow
 
 Write-Host ""
 Write-Host "==> 完成！" -ForegroundColor Cyan
 Write-Host "    1) 重启 dsh web（或刷新页面后新建会话）" -ForegroundColor Green
 Write-Host "    2) 新建会话时在预设选择器里选「数据分析模式」" -ForegroundColor Green
-Write-Host "    3) 技能对所有会话实时可用（可先手动把 xlsx/pdf 之外的技能目录检查一遍）" -ForegroundColor Green
+Write-Host "    3) 技能目录对所有会话实时可见" -ForegroundColor Green
