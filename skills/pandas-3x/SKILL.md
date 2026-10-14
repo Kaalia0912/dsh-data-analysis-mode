@@ -1,6 +1,6 @@
 ---
 name: pandas-3x
-description: pandas 3.x 高效数据分析技巧与新版行为坑位指南（Copy-on-Write、string dtype、groupby 默认参数等）。当分析任务使用 pandas 且版本为 3.x 时加载。
+description: pandas 3.x 高效数据分析技巧与新版行为坑位指南（Copy-on-Write、string dtype、groupby 默认参数等）。当分析任务使用 pandas 且版本为 3.x 时加载。High-performance pandas 3.x patterns and behaviour traps — Copy-on-Write, the new string dtype, changed groupby defaults. Load when an analysis uses pandas 3.x.
 ---
 
 # pandas 3.x 实战指南

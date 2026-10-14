@@ -1,6 +1,6 @@
 ---
 name: visualization
-description: matplotlib / seaborn 数据可视化规范（原创技能，MIT）：图表类型选择、中文字体处理、样式与保存规范。当任务需要画图、做图表、生成可视化报告时加载。
+description: matplotlib / seaborn 数据可视化规范（原创技能，MIT）：图表类型选择、中文字体处理、样式与保存规范。当任务需要画图、做图表、生成可视化报告时加载。matplotlib and seaborn chart standards — chart type selection, CJK font handling, styling, sizing and export rules. Load when a task needs charts or a visual report.
 ---
 
 # visualization — 数据可视化规范

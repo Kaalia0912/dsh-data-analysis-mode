@@ -1,6 +1,6 @@
 ---
 name: data-analysis
-description: 数据分析领域工作流：数据采集、清洗、EDA、统计建模、可视化与结论报告的标准流程与检查清单。当任务是分析数据、处理数据集、做统计或画图时加载本技能。
+description: 数据分析领域工作流：数据采集、清洗、EDA、统计建模、可视化与结论报告的标准流程与检查清单。当任务是分析数据、处理数据集、做统计或画图时加载本技能。A five-stage data analysis workflow — collection, cleaning, EDA, statistical modelling, visualisation and reporting — with a per-stage checklist. Load when a task involves analysing a dataset, running statistics, or producing charts.
 ---
 
 # 数据分析工作流（Data Analysis Workflow）

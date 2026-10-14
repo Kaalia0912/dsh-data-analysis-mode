@@ -1,6 +1,6 @@
 ---
 name: xlsx-tools
-description: Excel 工作簿（.xlsx/.xlsm）的读取、写入与报表制作（原创技能，MIT）：openpyxl/pandas 读写、公式重算（优先 Excel COM，无 Excel 则 LibreOffice）、样式与基础图表。当任务是处理 Excel 文件、生成表格报表、导出数据时加载。
+description: Excel 工作簿（.xlsx/.xlsm）的读取、写入与报表制作（原创技能，MIT）：openpyxl/pandas 读写、公式重算（优先 Excel COM，无 Excel 则 LibreOffice）、样式与基础图表。当任务是处理 Excel 文件、生成表格报表、导出数据时加载。Read, write and recalculate Excel workbooks (.xlsx/.xlsm) — openpyxl and pandas I/O, formula recalculation through Excel COM with a LibreOffice fallback, styling and basic charts. Load when a task involves Excel files, spreadsheet reports, or data export.
 ---
 
 # xlsx-tools — Excel 工作簿处理
@@ -89,7 +89,7 @@ ws.add_chart(chart, "F2")
 
 - 路径用原生 Windows 形式（`C:\...`），写文件统一 UTF-8。
 - 中文列名/内容没问题；注意 Excel 读取 CSV 时编码：`pd.read_csv(..., encoding="utf-8-sig")`（带 BOM，Excel 双击不乱码）。
-- 若用 Excel COM 重算，确保没有残留的 EXCEL.EXE 进程（可先 `Stop-Process -Name EXCEL`）。
+- 重算脚本会在结束时自动退出 Excel，正常情况下不会残留进程。**不要用 `Stop-Process -Name EXCEL -Force` 强杀 Excel**（它会终止本机所有 Excel 实例，用户未保存的工作簿会直接丢失）；若确实怀疑有残留实例，先向用户确认再处理。
 
 ## 交付检查清单
 

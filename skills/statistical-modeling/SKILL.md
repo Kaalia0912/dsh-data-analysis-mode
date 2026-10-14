@@ -1,6 +1,6 @@
 ---
 name: statistical-modeling
-description: 统计建模与机器学习标准流程（原创技能，MIT）：假设检验选择与前提检查、回归诊断、sklearn 建模与评估、过拟合检查。当任务涉及假设检验、回归、分类、聚类或模型评估时加载。
+description: 统计建模与机器学习标准流程（原创技能，MIT）：假设检验选择与前提检查、回归诊断、sklearn 建模与评估、过拟合检查。当任务涉及假设检验、回归、分类、聚类或模型评估时加载。A standard workflow for statistical modelling and machine learning — hypothesis test selection with assumption checks, regression diagnostics, scikit-learn training and evaluation, overfitting checks. Load when a task involves hypothesis testing, regression, classification, clustering or model evaluation.
 ---
 
 # statistical-modeling — 统计建模与 ML 标准流程

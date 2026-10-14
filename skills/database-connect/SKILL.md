@@ -1,6 +1,6 @@
 ---
 name: database-connect
-description: 通过 SQLAlchemy 连接 MySQL / PostgreSQL 数据库并安全查询（原创技能，MIT）：连接串构造、凭据管理、read_sql 读取、只读规范。当任务需要连数据库取数、查询线上库或导出表时加载。
+description: 通过 SQLAlchemy 连接 MySQL / PostgreSQL 数据库并安全查询（原创技能，MIT）：连接串构造、凭据管理、read_sql 读取、只读规范。当任务需要连数据库取数、查询线上库或导出表时加载。Connect to MySQL or PostgreSQL through SQLAlchemy safely — connection strings, credential handling, read_sql and a read-only discipline. Load when a task needs to query a database or export a table.
 ---
 
 # database-connect — 数据库连接与查询
